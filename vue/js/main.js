@@ -1,4 +1,4 @@
-const app = new Vue({
+new Vue({
     el: '#app',
     data: {
         cardTitle: '',
@@ -7,18 +7,16 @@ const app = new Vue({
         column2: [],
         column3: [],
         stop:0,
-        errors:[],
+        errors: [],
         isDisabled:false,
-        lastMarkedDateTime: null,
+
     },
     mounted() {
         this.loadCards();
 
     },
     methods: {
-        markItem() {
-            this.lastMarkedDateTime = new Date().toLocaleString();
-        },
+
         createCard() {
             if(this.column1.length===3){
                 this.errors.push("Не более 3 заметок в 1 колонке")
@@ -66,10 +64,9 @@ const app = new Vue({
                 }
 
                 if (completionPercentage >= 50) {
-                    while (this.column2.length < 5) {
+                    if(this.column2.length < 5) {
                         this.column2.push(card);
                         this.column1 = this.column1.filter(c => c.id !== card.id);
-                        break;
                     }
                 }
 
