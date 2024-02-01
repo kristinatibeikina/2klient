@@ -1,8 +1,32 @@
 body{
     background-color: #c0a583;
+    width: 900px;
+    margin: 0 auto;
 }
 .columns {
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
+    list-style-type: none;
+
+}
+ul{
+    margin-left: -40px;
+}
+.btn{
+    height: 30px;
+    width: 80px;
+    background-color: #2f2a26;
+    color: white;
+}
+.input{
+    height: 30px;
+    width: 200px;
+}
+ul{
+    list-style-type: none;
+}
+.time{
+    margin: 15px 0px;
+    font-weight: bold;
 }
