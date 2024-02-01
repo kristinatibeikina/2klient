@@ -33,8 +33,8 @@
                     <h3>{{ card.title }}</h3>
                     <ul>
                         <li v-for="item in card.items" :key="item.id">
-                            <input type="checkbox" v-model="item.completed">
-                            <input type="text" v-model="item.cardText" required>
+                            <input type="checkbox" v-model="item.completed" :disabled="isDisabled">
+                            <input type="text" v-model="item.cardText" required :disabled="isDisabled">
                             <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
                         </li>
                     </ul>

@@ -8,6 +8,7 @@ const app = new Vue({
         column3: [],
         stop:0,
         errors:[],
+        isDisabled:false,
 
     },
     mounted() {
@@ -54,6 +55,13 @@ const app = new Vue({
             this.column1.forEach(card => {
                 const completedItems = card.items.filter(item => item.completed).length;
                 const completionPercentage = (completedItems / card.items.length) * 100;
+
+                if(this.column2.length>4 && completionPercentage >= 50) {
+                    this.isDisabled = !this.isDisabled
+                }
+                else{
+                    this.isDisabled = false
+                }
 
                 if (completionPercentage >= 50) {
                     while (this.column2.length < 5) {
