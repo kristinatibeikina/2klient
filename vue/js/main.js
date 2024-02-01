@@ -32,6 +32,7 @@ const app = new Vue({
                 };
                 this.column1.push(newCard);
                 this.cardTitle = '';
+                this.cardText = '';
                 this.saveCards();
             }
 
@@ -40,6 +41,7 @@ const app = new Vue({
             const cards = {
                 column1: this.column1,
             };
+
             localStorage.setItem('cards', JSON.stringify(cards));
         },
 
