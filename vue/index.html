@@ -11,6 +11,27 @@
     <title>Доска заметок</title>
 </head>
 <body>
-
+<header>
+    <h1>Доска заметок</h1>
+</header>
+<div id="app">
+    <form @submit.prevent="createCard">
+        <input type="text" v-model="cardTitle" placeholder="Заголовок" required class="input">
+        <button type="submit" class="btn">Добавить</button>
+    </form>
+    <div class="columns">
+        <div class="column" id="column1">
+            <h2>Новые заметки</h2>
+            <div v-for="card in column1" :key="card.id" class="card">
+                <h3>{{ card.title }}</h3>
+                <ul>
+                    <li v-for="item in card.items" :key="item.id">
+                        <input type="checkbox" v-model="item.completed">
+                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+</div>
 </body>
 </html>
