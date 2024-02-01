@@ -76,6 +76,13 @@ new Vue({
                 const completedItems = card.items.filter(item => item.completed).length;
                 const completionPercentage = (completedItems / card.items.length) * 100;
 
+                if (completionPercentage < 50) {
+                    if(this.column1.length < 3){
+                        this.column1.push(card);
+                        this.column2 = this.column2.filter(c => c.id !== card.id);
+                    }
+
+                }
                 if (completionPercentage === 100) {
                     card.completedItems = completedItems;
                     card.completedDate = new Date().toLocaleString();
