@@ -1,0 +1,8 @@
+body{
+    background-color: #c0a583;
+}
+.columns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}

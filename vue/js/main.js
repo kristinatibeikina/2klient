@@ -15,8 +15,12 @@ const app = new Vue({
 
     },
     methods: {
+
         createCard() {
-            if (this.cardTitle !== '') {
+            if(this.column1.length===3){
+                this.errors.push("Не более 3 заметок в 1 колонке")
+            }
+            if (this.cardTitle !== ''  && this.column1.length<3) {
                 const newCard = {
                     id: Date.now(),
                     title: this.cardTitle,
@@ -52,8 +56,11 @@ const app = new Vue({
                 const completionPercentage = (completedItems / card.items.length) * 100;
 
                 if (completionPercentage >= 50) {
-                    this.column2.push(card);
-                    this.column1 = this.column1.filter(c => c.id !== card.id);
+                    while (this.column2.length < 5) {
+                        this.column2.push(card);
+                        this.column1 = this.column1.filter(c => c.id !== card.id);
+                        break;
+                    }
                 }
 
             });

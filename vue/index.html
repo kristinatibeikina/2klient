@@ -19,46 +19,54 @@
         <input type="text" v-model="cardTitle" placeholder="Заголовок" required class="input">
         <button type="submit" class="btn">Добавить</button>
     </form>
-    <div class="columns">
-        <div class="column" id="column1">
-            <h2>Новые заметки</h2>
-            <div v-for="card in column1" :key="card.id" class="card">
-                <h3>{{ card.title }}</h3>
-                <ul>
-                    <li v-for="item in card.items" :key="item.id">
-                        <input type="checkbox" v-model="item.completed">
-                        <input type="text" v-model="item.cardText" required>
-                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
-                    </li>
-                </ul>
+    <p v-if="errors.length">
+        <b>Превышен размер задач:</b>
+    <ul>
+        <li v-for="error in errors">{{ error }}</li>
+    </ul>
+    </p>
+    <div class="columns_row">
+        <div class="columns">
+            <div class="column" id="column1">
+                <h2>Новые</h2>
+                <div v-for="card in column1" :key="card.id" class="card">
+                    <h3>{{ card.title }}</h3>
+                    <ul>
+                        <li v-for="item in card.items" :key="item.id">
+                            <input type="checkbox" v-model="item.completed">
+                            <input type="text" v-model="item.cardText" required>
+                            <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="column" id="column2">
-            <h2>Начатые</h2>
-            <div v-for="card in column2" :key="card.id" class="card">
-                <h3>{{ card.title }}</h3>
-                <ul>
-                    <li v-for="item in card.items" :key="item.id">
-                        <input type="checkbox" v-model="item.completed">
-                        <input type="text" v-model="item.cardText" required>
-                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
-                    </li>
-                </ul>
+            <div class="column" id="column2">
+                <h2>Начатые</h2>
+                <div v-for="card in column2" :key="card.id" class="card">
+                    <h3>{{ card.title }}</h3>
+                    <ul>
+                        <li v-for="item in card.items" :key="item.id">
+                            <input type="checkbox" v-model="item.completed">
+                            <input type="text" v-model="item.cardText" required>
+                            <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div class="column" id="column3">
-            <h2>Законченные</h2>
-            <div v-for="card in column3" :key="card.id" class="card">
-                <h3>{{ card.title }} <span v-if="card.completed">(Завершено: {{ card.completedDate }})</span></h3>
-                <ul>
-                    <li v-for="item in card.items" :key="item.id">
-                        <input type="checkbox" v-model="item.completed">
-                        <input type="text" v-model="item.cardText" required>
-                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
-                    </li>
-                </ul>
+            <div class="column" id="column3">
+                <h2>Законченные</h2>
+                <div v-for="card in column3" :key="card.id" class="card">
+                    <h3>{{ card.title }} <span v-if="card.completed">(Завершено: {{ card.completedDate }})</span></h3>
+                    <ul>
+                        <li v-for="item in card.items" :key="item.id">
+                            <input type="checkbox" v-model="item.completed">
+                            <input type="text" v-model="item.cardText" required>
+                            <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-</div>
+    </div>
+    </div>
 </body>
 </html>
