@@ -44,8 +44,14 @@ const app = new Vue({
 
             localStorage.setItem('cards', JSON.stringify(cards));
         },
+        loadCards() {
+            const savedCards = JSON.parse(localStorage.getItem('cards'));
+
+            if (savedCards) {
+                this.column1 = savedCards.column1 || [];
+            }
+        },
 
     },
-
 
 })
