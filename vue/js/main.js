@@ -9,14 +9,16 @@ const app = new Vue({
         stop:0,
         errors:[],
         isDisabled:false,
-
+        lastMarkedDateTime: null,
     },
     mounted() {
         this.loadCards();
 
     },
     methods: {
-
+        markItem() {
+            this.lastMarkedDateTime = new Date().toLocaleString();
+        },
         createCard() {
             if(this.column1.length===3){
                 this.errors.push("Не более 3 заметок в 1 колонке")
@@ -26,11 +28,11 @@ const app = new Vue({
                     id: Date.now(),
                     title: this.cardTitle,
                     items: [
-                        { id: 1, text: '', completed: false },
-                        { id: 2, text: '', completed: false },
-                        { id: 3, text: '', completed: false },
-                        { id: 4, text: '', completed: false },
-                        { id: 5, text: '', completed: false },
+                        { id: 1, completed: false },
+                        { id: 2, completed: false },
+                        { id: 3, completed: false },
+                        { id: 4, completed: false },
+                        { id: 5, completed: false },
                     ],
                     completedItems: 0,
                     completedDate: ''
@@ -79,6 +81,7 @@ const app = new Vue({
 
                 if (completionPercentage === 100) {
                     card.completedItems = completedItems;
+                    card.completedDate = new Date().toLocaleString();
                     this.column3.push(card);
                     this.column2 = this.column2.filter(c => c.id !== card.id);
                 }
