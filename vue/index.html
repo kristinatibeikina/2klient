@@ -52,7 +52,7 @@
         </div>
         <div class="column" id="column3">
             <h2>Законченные</h2>
-            <div v-for="card in column3" :key="card.id" class="card">
+            <div v-for="(card, index) in column3" :key="card.id" class="card">
                 <h3>{{ card.title }}</h3>
                 <div>Завершено: {{ card.completedDate }}</div>
                 <ul>
@@ -61,6 +61,7 @@
                         <input type="text" v-model="item.cardText" required>
                     </li>
                 </ul>
+                <button v-on:click="removeMask(index,'need')">Удалить</button>
             </div>
         </div>
     </div>

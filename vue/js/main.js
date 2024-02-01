@@ -77,10 +77,8 @@ new Vue({
                 const completionPercentage = (completedItems / card.items.length) * 100;
 
                 if (completionPercentage < 50) {
-                    if(this.column1.length < 3){
-                        this.column1.push(card);
-                        this.column2 = this.column2.filter(c => c.id !== card.id);
-                    }
+                    this.column1.push(card);
+                    this.column2 = this.column2.filter(c => c.id !== card.id);
 
                 }
                 if (completionPercentage === 100) {
@@ -102,6 +100,10 @@ new Vue({
                 this.column3 = savedCards.column3 || [];
             }
         },
+        removeMask(index, type){
+           this.column3.splice(index,1)
+
+        }
 
     },
     watch: {
