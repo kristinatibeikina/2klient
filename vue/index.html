@@ -33,6 +33,32 @@
                 </ul>
             </div>
         </div>
+        <div class="column" id="column2">
+            <h2>Начатые</h2>
+            <div v-for="card in column2" :key="card.id" class="card">
+                <h3>{{ card.title }}</h3>
+                <ul>
+                    <li v-for="item in card.items" :key="item.id">
+                        <input type="checkbox" v-model="item.completed">
+                        <input type="text" v-model="item.cardText" required>
+                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column" id="column3">
+            <h2>Законченные</h2>
+            <div v-for="card in column3" :key="card.id" class="card">
+                <h3>{{ card.title }} <span v-if="card.completed">(Завершено: {{ card.completedDate }})</span></h3>
+                <ul>
+                    <li v-for="item in card.items" :key="item.id">
+                        <input type="checkbox" v-model="item.completed">
+                        <input type="text" v-model="item.cardText" required>
+                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
 </div>
 </body>
 </html>
